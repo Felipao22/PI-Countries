@@ -1,0 +1,27 @@
+.searchbar{
+    /* background-color: rgba(255, 255, 255, 0.395); */
+    display: flex;
+    padding: 15px;
+    border-radius: 15px;
+    flex: center ;
+    margin-left: 15px;
+    margin-right: 30%;
+    opacity: 0.7;
+  }
+
+  .input {
+    background-color: rgba(255, 255, 255, 0.395);
+    border-radius: 10px;
+
+  }
+  .input::placeholder {
+    color: white;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .searchbar button {
+    border-radius: 10px;
+    
+  }

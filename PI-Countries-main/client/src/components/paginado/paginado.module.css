@@ -1,0 +1,9 @@
+.paginado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 33%;
+    padding-right: 33%;
+    border-radius: 10px;
+
+}

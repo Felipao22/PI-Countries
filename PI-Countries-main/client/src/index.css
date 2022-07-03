@@ -1,4 +1,7 @@
 body {
+  background-image: url('https://images5.alphacoders.com/353/353018.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
