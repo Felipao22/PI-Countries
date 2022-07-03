@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { postActivity} from "../../redux/actions";
+import { getCountries, postActivity} from "../../redux/actions";
 import styles from './Activity.module.css'
 
 function validate(input) {
@@ -30,6 +30,10 @@ export default function ActivityCreated() {
         temporada: '',
         countries: []
     })
+
+    useEffect(()  => {
+        dispatch(getCountries())
+    },[dispatch])
 
     function handleChange(e){
         setInput({
@@ -62,12 +66,16 @@ export default function ActivityCreated() {
         })
     }
 
-
+console.log(countries)
     return(
         <div>
-            <Link to = '/home'> <button>Volver</button></Link>
-            <h1>Creá la actividad</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+
+            {
+                countries.length > 0 ?
+                <div>
+
+                <h1>Creá la actividad</h1>
+                <form className={styles.container} onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Actividad:</label>
                     <input className={errors.name && styles.danger} type="text" value= {input.name} name="name"
@@ -84,7 +92,7 @@ export default function ActivityCreated() {
                     />
                     {errors.dificultad && (
                         <p className="error">{errors.dificultad} </p>
-                    )}
+                        )}
                 </div>
                 <div>
                     <label>Duración:</label>
@@ -93,7 +101,7 @@ export default function ActivityCreated() {
                     />
                     {errors.duracion && (
                         <p className="error">{errors.duracion} </p>
-                    )}
+                        )}
                 </div>
                 <div>
                     <label>Temporada:</label>
@@ -102,19 +110,26 @@ export default function ActivityCreated() {
                     />
                     {errors.temporada && (
                         <p className="error">{errors.temporada} </p>
-                    )}
+                        )}
                 </div>
                 <select onChange ={e=>handleSelect(e)}>
                     <option value ='country'> Seleccione Pais</option>
                     {/* <button onClick={() => dispatch(deleteCountry(props.id))}>x</button> */}
                 {countries.map((a)=>(
-                     <option value={a.name}>{a.name}</option>
-                 ) )}
+                    <option value={a.name}>{a.name}</option>
+                    ) )}
                 
                 </select>
                 <div>{input.countries.map(e => e + ' ,')}</div>
                 <button type='submit'>Crear Actividad</button>
             </form>
+            <Link to = '/home'> <button>Volver</button></Link>
+                    </div>
+            : <div><option>Loading</option></div>
+        }
+    
         </div>
-    )
+
+
+        )
 }

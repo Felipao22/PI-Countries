@@ -28,6 +28,14 @@ export default function Home () {
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
+
+    // const pagina1 = (pageNumber) => {
+    //     if (pageNumber === 1) {
+    //         setCountriesPerPage(9)
+    //     } else {
+    //         setCountriesPerPage(10)
+    //     }
+    // }
     
     //dispatch en el componentDidMount
     useEffect(() => {
@@ -68,12 +76,11 @@ export default function Home () {
         <div>
             <Link to= '/countries' >
             </Link>
-            <h1>Countries</h1>
-            {/* <input type="text" /> */}
-            <button onClick={e => handleClick(e)} >
-                Reset
-            </button>
-                <SearchBar/>
+            <div >
+            <h1 className={styles.title}>Countries App</h1>
+            </div>
+            <SearchBar/>
+                
             <div className={styles.selectdiv}>
                 <select className={styles.select} onChange={e => handleSort(e)}>
                     <option value='asc'>Ascendente</option>
@@ -101,11 +108,14 @@ export default function Home () {
                     paginado = {paginado}
                 />
             </div>
-            <div>
+            <div className={styles.divx}>
 
                 <Link to='/activities'>
                     <button>Crear Actividad</button>
                 </Link>
+            <button onClick={e => handleClick(e)} >
+                Reset
+            </button>
             </div>
             <div>
 
@@ -116,6 +126,7 @@ export default function Home () {
                     countriesPerPage = {countriesPerPage}
                     allCountries = {allCountries.length}
                     paginado = {paginado}
+
                 />
 
             </div>

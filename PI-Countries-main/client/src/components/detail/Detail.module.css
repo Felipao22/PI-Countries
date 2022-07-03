@@ -1,0 +1,26 @@
+.container {
+    background-color:rgba(255, 255, 255, 0.897);
+    width: 400px;    
+    border-radius: 8px;
+    margin: 50px;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+    align-content: center;
+    margin-left: 37%;
+    padding-bottom: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    /* padding-left: 30px;
+    padding-right: 30px; */
+}
+
+.container p {
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.actividades {
+    margin-left: 25px;
+    margin-right: 25px;
+}

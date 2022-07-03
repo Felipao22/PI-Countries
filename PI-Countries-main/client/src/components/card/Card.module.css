@@ -1,26 +1,35 @@
-/* .container {
-    width: 20%;
-    height: auto;
-    margin: 50px;
-} */
 .container {       
     
-    background-color:#e9c56a3c;
+    background-color:rgba(255, 255, 255, 0.897);
     width: 250px;    
     border-radius: 8px;
     margin: 50px;
     justify-content: center;
     border: none;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
 }
 
 .container:hover{
-    background-color: #e9c56a3c;
+    background-color: #e9c56aee;
     box-shadow: none; 
-    size: larger;   
+    size: larger;
+    width: 300px;
+    transition: 0.5s;
 }
 
 img {
     max-width: 90%;
     height: auto;
+    margin-top: 15px;
+    /* border: solid; */
+    /* border-color: rgba(255, 255, 255, 0.929); */
+}
+
+h3 {
+    color: black;
+    font-size:x-large;
+}
+h5 {
+    color: black;
+    font-size: large;
 }

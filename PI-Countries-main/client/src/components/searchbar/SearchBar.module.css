@@ -1,21 +1,27 @@
 .searchbar{
     /* background-color: rgba(255, 255, 255, 0.395); */
     display: flex;
+    align-items: center;
     padding: 15px;
     border-radius: 15px;
     flex: center ;
     margin-left: 15px;
-    margin-right: 30%;
-    opacity: 0.7;
+    /* margin-right: 5%;
+    opacity: 0.7; */
+    justify-content: center;
   }
 
   .input {
-    background-color: rgba(255, 255, 255, 0.395);
+    background-color:rgba(255, 255, 255, 0.897);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
     border-radius: 10px;
+    height: 25px;
+    margin-left: 20px;
+    width: 300px;
 
   }
   .input::placeholder {
-    color: white;
+    color: black;
     padding-left: 10px;
     display: flex;
     justify-content: center;
@@ -23,5 +29,14 @@
 
   .searchbar button {
     border-radius: 10px;
+    height: 27px;
+    background-color:rgba(255, 255, 255, 0.897);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+    color: black;
     
+  }
+
+  .searchbar button:hover {
+    background-color:rgba(255, 255, 255, 0.95);
+    transition: 0.5s; 
   }

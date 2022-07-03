@@ -10,3 +10,38 @@
     display: flex;
     justify-content: center;
   } */
+
+.container {
+  background-color:rgba(255, 255, 255, 0.897);
+  width: 400px;    
+  border-radius: 8px;
+  margin: 50px;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+  align-content: center;
+  padding-bottom: 20px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  padding: 40px;
+  margin-left: 34%;
+}
+
+.container label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: bold;
+  margin-right: 5%;
+}
+.container input {
+  width: 150px;
+  margin-left: 5px;
+}
+
+.container button {
+  margin-top: 20px;
+}
+
+.container select {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color:rgba(255, 255, 255, 0.897);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+}
