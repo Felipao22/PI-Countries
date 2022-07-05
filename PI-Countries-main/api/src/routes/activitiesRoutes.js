@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
         res.status(200).send(activity)
     } catch (error) {
         console.log(error)
-    }
-});
+    } 
+}); 
 
 
 router.post('/', async (req, res) => {
@@ -25,10 +25,10 @@ router.post('/', async (req, res) => {
                 duracion: duracion,
                 temporada: temporada,
         })
-        let activadDb = await Country.findAll({
+        let actADb = await Country.findAll({
                 where:{name: countries}
         })
-        createAct.addCountry(activadDb)
+        createAct.addCountry(actADb)
         res.status(200).send('Actividad creada');
 
     } catch (error) {

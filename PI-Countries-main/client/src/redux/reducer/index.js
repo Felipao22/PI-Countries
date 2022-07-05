@@ -1,10 +1,12 @@
-import { GET_ACTIVITIES, GET_ALL_COUNTRIES, GET_DETAIL, GET_NAME_COUNTRIES, ORDER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, POST_ACTIVITY, SET_DETAIL_COUNTRY} from "../actions/index";
+import { FILTER_ACTIVITY, GET_ACTIVITIES, GET_ALL_COUNTRIES, GET_DETAIL, GET_NAME_COUNTRIES, ORDER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, POST_ACTIVITY, SET_DETAIL_COUNTRY} from "../actions/index";
 
 const initialState = {
     countries: [],
+    allCountries: [],
+    setCountry: [],
     countryDetail: {},
     activities: [],
-    allCountries: [],
+    stateActivity: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -90,26 +92,30 @@ const rootReducer = (state = initialState, action) => {
                 return {
                     ...state
                 }
-            case GET_ACTIVITIES:
-                return {
-                    ...state,
-                    activities: action.payload
-                }
-            case ORDER_BY_CONTINENT:
-                let continentsFilter = action.payload === 'All' ?
-                state.allCountries : 
-                state.allCountries.filter(e =>
-                    e.continents === action.payload
-                     )
-                return {
-                    ...state,
-                    countries: continentsFilter
-                }
-            // case DELETE_COUNTRY:
-            //     return {
-            //         ...state,
-            //         countries: state.countries.filter(e => e.name !== action.payload)
-            //     }
+                case ORDER_BY_CONTINENT:
+                    let continentsFilter = action.payload === 'All' ?
+                    state.allCountries : 
+                    state.allCountries.filter(e =>
+                        e.continents === action.payload
+                        )
+                        return {
+                            ...state,
+                            countries: continentsFilter
+                        }
+                case GET_ACTIVITIES:
+                        return {
+                            ...state,
+                            stateActivity: action.payload
+                        }
+            case FILTER_ACTIVITY: 
+              const allCountries = state.setCountry
+              const typeActivity = action.payload === 'All' ? allCountries.filter(e => e.stateActivity.length > 0):
+              allCountries.filter(e => e.activities && e.activities.map(e => e.name).includes(action.payload))
+              console.log(typeActivity)
+              return{
+                ...state,
+                allCountries: typeActivity
+              }
         default:
             return {...state};
     }

@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 //importo los hooks de react-redux que voy a usar
 import {useDispatch, useSelector} from 'react-redux';
 //importo las actions que me interesan usar en este componente
-import {getCountries, orderByContinent, orderByName, orderByPopulation} from '../../redux/actions/index'
+import {filterActivity, getCountries, orderByContinent, orderByName, orderByPopulation} from '../../redux/actions/index'
 import {Link} from 'react-router-dom';
 //importo los componentes que voy a usar
 import Paginado from "../paginado/Paginado";
 import { Cards } from "../cards/Cards";
 import SearchBar from "../searchbar/SearchBar";
+import FiltActivity from '../filtactivity/FiltActivity'
 import styles from './Home.module.css';
 
 export default function Home () {
@@ -18,28 +19,23 @@ export default function Home () {
     // let countriesPerPage = 9;
     const [orden, setOrden] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage, setCountriesPerPage] = useState(10);
+    const [countriesPerPage] = useState(10);
     //constantes para el paginado
     const indexOfLastCountry = currentPage * countriesPerPage; // 10 o 9
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // 0
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+    const [filter, setFilter] = useState('');
     
     //seteo el estado con el constante numero de pagina
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
-    // const pagina1 = (pageNumber) => {
-    //     if (pageNumber === 1) {
-    //         setCountriesPerPage(9)
-    //     } else {
-    //         setCountriesPerPage(10)
-    //     }
-    // }
     
     //dispatch en el componentDidMount
     useEffect(() => {
         dispatch(getCountries())
+        // dispatch(filterActivity())
     },[dispatch])
     
     //funcion para volver a cargar los países
@@ -71,7 +67,7 @@ export default function Home () {
         setOrden(`Ordenado ${e.target.value}`);
     }
     console.log(orden)
-
+    
     return(
         <div>
             <Link to= '/countries' >
@@ -79,7 +75,9 @@ export default function Home () {
             <div >
             <h1 className={styles.title}>Countries App</h1>
             </div>
-            <SearchBar/>
+            <SearchBar 
+            setCurrentPage={setCurrentPage}
+            />
                 
             <div className={styles.selectdiv}>
                 <select className={styles.select} onChange={e => handleSort(e)}>
@@ -99,6 +97,12 @@ export default function Home () {
                     <option value='Europe'>Europe</option>
                     <option value='Oceania'>Oceania</option>
                 </select>
+                
+                <FiltActivity
+                setFilter={setFilter}
+                setCurrentPage={setCurrentPage}></FiltActivity>
+
+           
             </div>
             <div>
 
@@ -116,6 +120,10 @@ export default function Home () {
             <button onClick={e => handleClick(e)} >
                 Reset
             </button>
+                <Link to='/'>
+                <button>Landing Page</button>
+
+                </Link>
             </div>
             <div>
 

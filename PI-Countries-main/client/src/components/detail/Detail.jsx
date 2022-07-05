@@ -33,11 +33,11 @@ export default function Detail(){
                 <h4>Área: {countries[0].area? countries[0].area : 0}Km2</h4>
                 <h4>Población: {countries[0].population} Hab.</h4>
                 <h4 className={styles.actividades}>Actividades: {countries[0].activities?
-                countries[0].activities.map(e => `Nombre: ${e.name}, Dificultad: ${e.dificultad}, Duración: ${e.duracion} minutos, Temporada: ${e.temporada}.`) : 'No hay actividades.'}</h4>
+                countries[0].activities.map(e => ` Nombre: ${e.name}, Dificultad: ${e.dificultad}, Duración: ${e.duracion}hs., Temporada: ${e.temporada}.`) : 'No hay actividades.'}</h4>
                     <Link to='/home'>
                         <button>Volver</button>
                     </Link>
-            </div> : <h2>Loading...</h2> 
+            </div> : <h2 className={styles.loading}>Loading...</h2> 
             }
         </div>
     )

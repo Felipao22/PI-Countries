@@ -4,7 +4,7 @@ import { getNameCountries } from "../../redux/actions";
 import styles from './SearchBar.module.css'
 
 
-export default function SearchBar() {
+export default function SearchBar({setCurrentPage}) {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     
@@ -16,6 +16,7 @@ export default function SearchBar() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(getNameCountries(name));
+        setCurrentPage(1)
     }
 
 

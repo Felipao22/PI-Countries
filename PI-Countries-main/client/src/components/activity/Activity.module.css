@@ -45,3 +45,30 @@
   background-color:rgba(255, 255, 255, 0.897);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
 }
+
+.check{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80%;
+  margin-right: 80%;
+
+}
+
+.delete {
+  display: flex;
+  justify-content: center;
+
+}
+
+.x{
+    /* float:inline-start; */
+    border: none;
+    background-color:  rgba(255, 0, 0, 0.736);
+    color: white;
+    justify-content: center;
+}
+.country {
+  display: flex;
+
+}

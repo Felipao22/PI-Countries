@@ -22,5 +22,10 @@
 
 .actividades {
     margin-left: 25px;
-    margin-right: 25px;
+    margin-right: 25px; 
+}
+
+.loading {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: white;   
 }

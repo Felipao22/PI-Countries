@@ -8,7 +8,8 @@ export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SET_DETAIL_COUNTRY = 'SET_DETAIL_COUNTRY';
-// export const DELETE_COUNTRY = 'DELETE_COUNTRY';
+// export const SEARCH_ACTIVITY = 'SEARCH_ACTIVITY';
+export const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
 
 
 // export const getCountries = () => {
@@ -111,9 +112,9 @@ export const postActivity = (payload) => {
     }
 }
 
-// export const deleteCountry = (name) => {
-//     return {
-//         type: DELETE_COUNTRY,
-//         payload: name
-//     }
-// }
+export const filterActivity = (payload) => {
+    return{
+        type: FILTER_ACTIVITY,
+        payload: payload
+    }
+}

@@ -10,8 +10,12 @@ function validate(input) {
         errors.name = 'Se requiere un nombre'
     } else if(!input.dificultad) {
         errors.dificultad = 'Se requiere una dificultad'
-    } else if(!input.duracion) {
+    } else if(input.dificultad > 5 || input.dificultad < 1) {
+        errors.dificultad = 'Se requiere una dificultad entre 1 y 5'
+    }else if(!input.duracion) {
         errors.duracion = 'Se requiere una duración'
+    }else if(input.duracion > 24) {
+        errors.duracion = 'Se requiere una duración hasta 24 hs.'
     } else if(!input.temporada) {
         errors.temporada = 'Se requiere una temporada'
     }
@@ -20,7 +24,12 @@ function validate(input) {
 
 export default function ActivityCreated() {
     const dispatch = useDispatch();
-    const countries = useSelector((state) => state.countries);
+    let countries = useSelector((state) => state.allCountries);
+    countries = countries.sort((a, b) => {
+        if(a.name > b.name) return  1;
+        if(b.name > a.name) return -1;
+        return 0;
+    })
     const [errors, setErrors] = useState({});
 
     const [input, setInput] = useState({
@@ -48,11 +57,23 @@ export default function ActivityCreated() {
     
 
     function handleSelect(e){
+        e.preventDefault();
+        if(!input.countries.includes(e.target.value) && e.target.value !== 'country')
         setInput({
             ...input,
             countries: [...input.countries, e.target.value]
         })
     }
+
+    function handleCheck(e) {
+        if(e.target.checked){
+            setInput({
+                ...input,
+                temporada: e.target.value
+            })
+        }
+    }
+
     function handleSubmit(e){
         e.preventDefault();
         dispatch(postActivity(input));
@@ -66,7 +87,15 @@ export default function ActivityCreated() {
         })
     }
 
-console.log(countries)
+    function handleDelete(e) {
+        setInput({
+            ...input,
+            countries: input.countries.filter(c=> c !== e  )
+        })
+    }
+
+
+
     return(
         <div>
 
@@ -80,7 +109,8 @@ console.log(countries)
                     <label>Actividad:</label>
                     <input className={errors.name && styles.danger} type="text" value= {input.name} name="name"
                     onChange={(e) => handleChange(e)}
-                    />
+                    required/>
+                    <br/>
                     {errors.name && (
                         <p className={styles.danger}>{errors.name} </p>
                     )}
@@ -89,7 +119,10 @@ console.log(countries)
                     <label>Dificultad:</label>
                     <input type="text" value= {input.dificultad} name='dificultad'
                     onChange={(e) => handleChange(e)}
-                    />
+                    max={5}
+                    min={1}
+                    required/>
+                    <br/>
                     {errors.dificultad && (
                         <p className="error">{errors.dificultad} </p>
                         )}
@@ -98,29 +131,60 @@ console.log(countries)
                     <label>Duración:</label>
                     <input type="text" value= {input.duracion} name='duracion'
                     onChange={(e) => handleChange(e)}
-                    />
+                    max='24'
+                    min='0'
+                    required/>
+                    <br/>
                     {errors.duracion && (
                         <p className="error">{errors.duracion} </p>
                         )}
                 </div>
-                <div>
-                    <label>Temporada:</label>
-                    <input type="text" value= {input.temporada} name='temporada'
-                    onChange={(e) => handleChange(e)}
-                    />
+                <div className={styles.check}>
+                    <br />
+                    <label>
+                    <legend>Temporada:</legend>
+                    <input type="radio" id='Verano' value='Verano' name='temporada'
+                    onClick={(e) => handleCheck(e)}
+                    defaultChecked
+                    required/>
+                    Verano
+                    </label>
+                    <label>
+                    <input type="radio" id='Primavera' value='Primavera' name='temporada'
+                    onClick={(e) => handleCheck(e)}
+                    required/>
+                    Primavera
+                    </label>
+                    <label>
+                    <input type="radio" id='Otoño' value='Otoño' name='temporada'
+                    onClick={(e) => handleCheck(e)}
+                    required/>
+                    Otoño
+                    </label>
+                    <label>
+                    <input type="radio" id='Invierno' value='Invierno' name='temporada'
+                    onClick={(e) => handleCheck(e)}
+                    required/>
+                    Invierno
+                    </label>
                     {errors.temporada && (
                         <p className="error">{errors.temporada} </p>
                         )}
                 </div>
-                <select onChange ={e=>handleSelect(e)}>
+                <select onChange ={e=>handleSelect(e)} defaultValue='country'>
                     <option value ='country'> Seleccione Pais</option>
-                    {/* <button onClick={() => dispatch(deleteCountry(props.id))}>x</button> */}
                 {countries.map((a)=>(
-                    <option value={a.name}>{a.name}</option>
+                    <option key={a.name} value={a.name}>{a.name}</option>
                     ) )}
                 
                 </select>
-                <div>{input.countries.map(e => e + ' ,')}</div>
+                <div className={styles.delete}>
+                <p  className={styles.country}>{input.countries.map(e => e + ', ')}</p>
+                {input.countries.map(e => 
+                <p onClick={() => handleDelete(e)}><button className={styles.x}>X</button>                        
+                    </p>
+                    )}
+                </div>
                 <button type='submit'>Crear Actividad</button>
             </form>
             <Link to = '/home'> <button>Volver</button></Link>
