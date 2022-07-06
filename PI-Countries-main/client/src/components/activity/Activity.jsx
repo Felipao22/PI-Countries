@@ -103,7 +103,7 @@ export default function ActivityCreated() {
                 countries.length > 0 ?
                 <div>
 
-                <h1>Creá la actividad</h1>
+                <h1 className={styles.h1}>Creá la actividad</h1>
                 <form className={styles.container} onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Actividad:</label>
@@ -115,14 +115,17 @@ export default function ActivityCreated() {
                         <p className={styles.danger}>{errors.name} </p>
                     )}
                 </div>
-                <div>
+                <div className={styles.select}>
                     <label>Dificultad:</label>
-                    <input type="text" value= {input.dificultad} name='dificultad'
-                    onChange={(e) => handleChange(e)}
-                    max={5}
-                    min={1}
-                    required/>
-                    <br/>
+                    <select name="dificultad" value={input.dificultad} id="dificultad"  onChange={(e) => handleChange(e)}>
+                    <option disabled='---' value="---">---</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                 
+                    </select>
                     {errors.dificultad && (
                         <p className="error">{errors.dificultad} </p>
                         )}
@@ -165,9 +168,7 @@ export default function ActivityCreated() {
                     required/>
                     
                     
-                    {errors.temporada && (
-                        <p className="error">{errors.temporada} </p>
-                        )}
+                 
                 </div>
                 <select onChange ={e=>handleSelect(e)} defaultValue='country'>
                     <option value ='country'> Seleccione Pais</option>

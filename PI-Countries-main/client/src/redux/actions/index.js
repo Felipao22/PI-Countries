@@ -55,7 +55,7 @@ export const getNameCountries = (name) => {
                 payload: res.data
             })
         } catch (error) {
-            console.log(error)
+            alert('No existe ese País')
         }
     }
 }

@@ -1,15 +1,4 @@
-/* .danger {
-    color: red;
-    font-size: 10px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .danger {
-    border: 2px solid red;
-    display: flex;
-    justify-content: center;
-  } */
+
 
 .container {
   background-color:rgba(255, 255, 255, 0.897);
@@ -23,7 +12,7 @@
   padding-bottom: 20px;
   font-family: 'IBM Plex Sans', sans-serif;
   padding: 40px;
-  margin-left: 34%;
+  margin-left: 32%;
   
 }
 
@@ -91,4 +80,40 @@
   margin-top: 7px;
   margin-bottom: 7px;
   padding-right: 148px;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: bold;
+  margin-right: 25%;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  padding-right: 5px;
+}
+
+.select select {
+  font-size: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  background-color:rgba(255, 255, 255, 0.897);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+  border-radius: 10px;
+  color: black;
+  margin-left: 25 px;
+}
+
+.h1 {
+  font-size: 30px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color:rgba(255, 255, 255, 0.897);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+  border-radius: 10px;
+  color: black;
+  margin-left: 40%;
+  margin-right: 40%;
+  align-content: center;
+  justify-content: center;
+  padding-left: 20px;
 }

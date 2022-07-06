@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameCountries } from "../../redux/actions";
-import styles from './SearchBar.module.css'
+import styles from './SearchBar.module.css';
 
 
 export default function SearchBar({setCurrentPage}) {
@@ -22,7 +22,7 @@ export default function SearchBar({setCurrentPage}) {
 
     return(
         <div className={styles.searchbar}>
-            <input className={styles.input} type="text" placeholder="Buscar País" onChange={(e) => handleInputChange(e) } />
+            <input className={styles.input} type="text" placeholder="Buscar País" value={name} onChange={(e) => handleInputChange(e) } />
             <button type="submit" onClick={(e) => handleSubmit(e)} >Buscar</button>
         </div>
     )

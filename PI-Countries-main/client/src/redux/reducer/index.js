@@ -30,19 +30,19 @@ const rootReducer = (state = initialState, action) => {
         case ORDER_BY_NAME:
             let sortedArr = action.payload === 'asc' ?
             state.countries.sort(function (a, b) {
-                if(a.name > b.name) {
+                if(a.name.toLowerCase() > b.name.toLowerCase()) {
                     return 1;
                 }
-                if(b.name > a.name) {
+                if(b.name.toLowerCase() > a.name.toLowerCase()) {
                     return -1;
                 }
                 return 0;
             }) :
             state.countries.sort(function (a, b) {
-                if(a.name > b.name) {
+                if(a.name.toLowerCase() > b.name.toLowerCase()) {
                     return -1;
                 }
-                if(b.name > a.name) {
+                if(b.name.toLowerCase() > a.name.toLowerCase()) {
                     return 1;
                 }
                 return 0;

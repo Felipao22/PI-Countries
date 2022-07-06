@@ -6,7 +6,10 @@ module.exports = (sequelize) => {
   sequelize.define('activities', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+      }
     },
     dificultad: {
       type: DataTypes.ENUM(['1', '2', '3', '4', '5']),
