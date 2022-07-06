@@ -16,17 +16,3 @@ export const Cards = ({currentCountries}) => {
     </div>
   )
 }
-
-
-// {
-//     currentCountries?.map(c => {
-//         return(
-//             <div>
-//                 <Link to={'/home/' + c.id}>
-//                     <Card key={c.id} name={c.name} flags={c.flags} continents={c.continents}/>
-//                </Link>
-
-//             </div>
-//         )
-//     })
-// }

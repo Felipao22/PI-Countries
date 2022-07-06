@@ -4,39 +4,46 @@ import { useEffect, useState } from "react";
 //importo los hooks de react-redux que voy a usar
 import {useDispatch, useSelector} from 'react-redux';
 //importo las actions que me interesan usar en este componente
-import {filterActivity, getCountries, orderByContinent, orderByName, orderByPopulation} from '../../redux/actions/index'
+import {getActivities, getCountries, orderByContinent, orderByName, orderByPopulation, filterActivity} from '../../redux/actions/index'
 import {Link} from 'react-router-dom';
 //importo los componentes que voy a usar
 import Paginado from "../paginado/Paginado";
 import { Cards } from "../cards/Cards";
 import SearchBar from "../searchbar/SearchBar";
-import FiltActivity from '../filtactivity/FiltActivity'
+// import FiltActivity from '../filtactivity/FiltActivity'
 import styles from './Home.module.css';
 
 export default function Home () {
     const dispatch = useDispatch();
     const allCountries = useSelector((state => state.countries));
+    const allActivities = useSelector((state) => state.stateActivity)
     // let countriesPerPage = 9;
     const [orden, setOrden] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage] = useState(10);
+    const [countriesPerPage, setCountriesPerPage] = useState(10);
     //constantes para el paginado
-    const indexOfLastCountry = currentPage * countriesPerPage; // 10 o 9
+    const indexOfLastCountry = currentPage * countriesPerPage; // 10
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // 0
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
-    const [filter, setFilter] = useState('');
     
     //seteo el estado con el constante numero de pagina
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
+
     
     //dispatch en el componentDidMount
     useEffect(() => {
         dispatch(getCountries())
-        // dispatch(filterActivity())
-    },[dispatch])
+       
+    },[dispatch, currentPage])
+
+    useEffect(() => {
+        dispatch(getActivities())
+    },[dispatch, currentPage])
+
+
     
     //funcion para volver a cargar los países
     function handleClick(e){
@@ -66,7 +73,18 @@ export default function Home () {
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`);
     }
+    //funcion para mostrar las actividades
+    function handleChange(e) {
+        e.preventDefault()
+        dispatch(filterActivity(e.target.value))
+        setCurrentPage(1)
+        setOrden(`Ordenado ${e.target.value}`)
+    }
+
+
+
     console.log(orden)
+    console.log(allActivities);
     
     return(
         <div>
@@ -97,11 +115,20 @@ export default function Home () {
                     <option value='Europe'>Europe</option>
                     <option value='Oceania'>Oceania</option>
                 </select>
-                
-                <FiltActivity
-                setFilter={setFilter}
-                setCurrentPage={setCurrentPage}></FiltActivity>
+                <div>
+                <div>
+                <select className={styles.select} onChange={e => handleChange(e)}>
+                    <option value="All">All</option>
+                    {allActivities? allActivities.map(e => 
+                        <option value={e.name} key={e.name}>{e.name}</option>
+                        )
+                        : <div><option>Loading</option></div>
+                    }
 
+                    
+                    </select>
+                    </div>
+                </div>
            
             </div>
             <div>
@@ -126,8 +153,8 @@ export default function Home () {
                 </Link>
             </div>
             <div>
-
                 <Cards currentCountries={currentCountries} />
+                                
             </div>
             <div>
                  <Paginado

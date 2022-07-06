@@ -14,7 +14,7 @@ export default function Detail(){
     useEffect(() => {   
         dispatch(getDetail(id))
         return () => { 
-            dispatch(setDetail)
+            dispatch(setDetail())
         }
     },[dispatch, id])  
 
@@ -29,7 +29,7 @@ export default function Detail(){
                 <h2>{countries[0].continents? countries[0].continents: 'No tiene continente'}</h2>
                 <h3>{countries[0].id? countries[0].id:'No tiene id' }</h3>
                 <h4>Capital: {countries[0].capital? countries[0].capital: 'No tiene capital'}</h4>
-                <h4>Continente: {countries[0].subregion?countries[0].subregion : 'No tiene SubRegion'}</h4>
+                <h4>Subregión: {countries[0].subregion?countries[0].subregion : 'No tiene SubRegion'}</h4>
                 <h4>Área: {countries[0].area? countries[0].area : 0}Km2</h4>
                 <h4>Población: {countries[0].population} Hab.</h4>
                 <h4 className={styles.actividades}>Actividades: {countries[0].activities?

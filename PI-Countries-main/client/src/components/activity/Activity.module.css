@@ -13,7 +13,7 @@
 
 .container {
   background-color:rgba(255, 255, 255, 0.897);
-  width: 400px;    
+  width: 500px;    
   border-radius: 8px;
   margin: 50px;
   justify-content: center;
@@ -24,6 +24,7 @@
   font-family: 'IBM Plex Sans', sans-serif;
   padding: 40px;
   margin-left: 34%;
+  
 }
 
 .container label {
@@ -34,6 +35,8 @@
 .container input {
   width: 150px;
   margin-left: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 .container button {
@@ -48,16 +51,23 @@
 
 .check{
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  width: 400px;
+  height: auto;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  /* justify-content: center;
   align-items: center;
   margin-left: 80%;
-  margin-right: 80%;
+  margin-right: 80%; */
+
 
 }
 
 .delete {
   display: flex;
   justify-content: center;
+  align-content: center;
 
 }
 
@@ -71,4 +81,14 @@
 .country {
   display: flex;
 
+}
+.temporada{
+  display: flex;
+  justify-content: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: bold;
+  margin-right: 40%;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  padding-right: 148px;
 }

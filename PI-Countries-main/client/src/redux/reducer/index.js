@@ -6,7 +6,7 @@ const initialState = {
     setCountry: [],
     countryDetail: {},
     activities: [],
-    stateActivity: []
+    stateActivity: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -92,29 +92,30 @@ const rootReducer = (state = initialState, action) => {
                 return {
                     ...state
                 }
-                case ORDER_BY_CONTINENT:
-                    let continentsFilter = action.payload === 'All' ?
-                    state.allCountries : 
-                    state.allCountries.filter(e =>
-                        e.continents === action.payload
-                        )
-                        return {
-                            ...state,
-                            countries: continentsFilter
-                        }
-                case GET_ACTIVITIES:
-                        return {
-                            ...state,
-                            stateActivity: action.payload
-                        }
+            case ORDER_BY_CONTINENT:
+                let continentsFilter = action.payload === 'All' ?
+                state.allCountries : 
+                state.allCountries.filter(e =>
+                    e.continents === action.payload
+                    )
+                    return {
+                        ...state,
+                        countries: continentsFilter
+                    }
+            case GET_ACTIVITIES:
+                    return {
+                        ...state,
+                        stateActivity: action.payload
+                    }
             case FILTER_ACTIVITY: 
-              const allCountries = state.setCountry
-              const typeActivity = action.payload === 'All' ? allCountries.filter(e => e.stateActivity.length > 0):
+              const allCountries = state.allCountries
+              const typeActivity = action.payload === 'All' ? allCountries :
               allCountries.filter(e => e.activities && e.activities.map(e => e.name).includes(action.payload))
               console.log(typeActivity)
+              console.log(action.payload, 'Payload')
               return{
                 ...state,
-                allCountries: typeActivity
+                countries: typeActivity
               }
         default:
             return {...state};

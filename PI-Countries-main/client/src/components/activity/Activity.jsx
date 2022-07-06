@@ -107,7 +107,7 @@ export default function ActivityCreated() {
                 <form className={styles.container} onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Actividad:</label>
-                    <input className={errors.name && styles.danger} type="text" value= {input.name} name="name"
+                    <input  className={errors.name && styles.danger} type="text" value= {input.name} name="name"
                     onChange={(e) => handleChange(e)}
                     required/>
                     <br/>
@@ -139,34 +139,32 @@ export default function ActivityCreated() {
                         <p className="error">{errors.duracion} </p>
                         )}
                 </div>
+                    <label className={styles.temporada}>Temporada:</label>
                 <div className={styles.check}>
                     <br />
-                    <label>
-                    <legend>Temporada:</legend>
+                    <label >Verano</label>
                     <input type="radio" id='Verano' value='Verano' name='temporada'
                     onClick={(e) => handleCheck(e)}
                     defaultChecked
-                    required/>
-                    Verano
-                    </label>
-                    <label>
+                    required/>                    
+                    
+                    <label >Primavera</label>
                     <input type="radio" id='Primavera' value='Primavera' name='temporada'
                     onClick={(e) => handleCheck(e)}
                     required/>
-                    Primavera
-                    </label>
-                    <label>
+                    
+                    <label >Otoño</label>
                     <input type="radio" id='Otoño' value='Otoño' name='temporada'
                     onClick={(e) => handleCheck(e)}
                     required/>
-                    Otoño
-                    </label>
-                    <label>
+               
+                    
+                    <label >Invierno</label>
                     <input type="radio" id='Invierno' value='Invierno' name='temporada'
                     onClick={(e) => handleCheck(e)}
                     required/>
-                    Invierno
-                    </label>
+                    
+                    
                     {errors.temporada && (
                         <p className="error">{errors.temporada} </p>
                         )}

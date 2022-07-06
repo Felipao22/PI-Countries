@@ -15,7 +15,6 @@ function App() {
         <Route path= '/activities' component={Activity} />
         <Route exact path= '/countries/:id' component={Detail} />
       </Switch>
-      {/* <h1>Henry Countries</h1> */}
     </div>
 
     </BrowserRouter>

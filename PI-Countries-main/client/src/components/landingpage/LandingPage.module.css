@@ -1,4 +1,4 @@
-/* .title {
+.title {
     font-family: 'IBM Plex Sans', sans-serif;
     background-color:rgba(255, 255, 255, 0.897);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
@@ -12,15 +12,15 @@
     margin-top: 50px;
 
 }
-button {
+.boton {
+    font-family: 'IBM Plex Sans', sans-serif;
     justify-content: center;
+    background-color:rgba(255, 255, 255, 0.897);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+    color: black;
     margin: 20%;
     padding-left: 20px;
     padding-right: 20px;
-    display: flex;
+    height: 50px;
     align-content: center;
-    height: 300px;
-    width: 300px;
-    padding-top: 20px;
-
-} */
+}

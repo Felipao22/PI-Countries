@@ -8,20 +8,10 @@ export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SET_DETAIL_COUNTRY = 'SET_DETAIL_COUNTRY';
-// export const SEARCH_ACTIVITY = 'SEARCH_ACTIVITY';
+export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
 
 
-// export const getCountries = () => {
-//     return async function(dispatch) {
-//         const res = await axios('http://localhost:3001/countries');
-//         return dispatch({
-//             type: GET_ALL_COUNTRIES,
-//             payload: res.data
-//         }); 
-//     }
-
-// }
 export const getCountries = () => {
     return function (dispatch){
         return fetch('http://localhost:3001/countries')
@@ -118,3 +108,4 @@ export const filterActivity = (payload) => {
         payload: payload
     }
 }
+

@@ -27,7 +27,7 @@ router.get('/', async (req, res) =>{
 
 
 router.get('/:id', async  (req, res) =>{                                             
-    let {id} = req.params                                                               
+    let {id} = req.params;                                                              
     try{
         let allId = await getAllCountry();                                                   
         let countryId = allId.filter( c => c.id.toUpperCase().startsWith(id.toUpperCase()))
@@ -35,7 +35,9 @@ router.get('/:id', async  (req, res) =>{
         res.status(200).send(countryId)
         : res.status(404).send('No existe Id del Pais')
     }
-    catch(error){res.send(error)}
+    catch(error){
+        res.send(error)
+    }
 });
 
 
