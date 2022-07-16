@@ -10,17 +10,28 @@ export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SET_DETAIL_COUNTRY = 'SET_DETAIL_COUNTRY';
 export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
+// export const ORDER_BY_UNDER_POPULATION = 'ORDER_BY_UNDER_POPULATION';
 
+
+// export const getCountries = () => {
+//     return function (dispatch){
+//         return fetch('http://localhost:3001/countries')
+//         .then(res => res.json())
+//         .then(data => {
+//             dispatch({
+//                 type: GET_ALL_COUNTRIES,
+//                 payload: data
+//             })
+//         })
+//     }
+// }
 
 export const getCountries = () => {
-    return function (dispatch){
-        return fetch('http://localhost:3001/countries')
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_COUNTRIES,
-                payload: data
-            })
+    return async function (dispatch) {
+        const res = await axios('/countries');
+        return dispatch({
+            type: GET_ALL_COUNTRIES,
+            payload: res.data
         })
     }
 }
@@ -46,10 +57,17 @@ export const orderByContinent = (continents) => {
     }
 }
 
+// export const orderByUnderPopulation = (payload) => {
+//     return{
+//         type: ORDER_BY_UNDER_POPULATION,
+//         payload: payload
+//     }
+// }
+
 export const getNameCountries = (name) => {
     return async function(dispatch) {
         try {
-            const res = await axios('http://localhost:3001/countries?name=' + name);
+            const res = await axios('/countries?name=' + name);
             return dispatch({
                 type: GET_NAME_COUNTRIES,
                 payload: res.data
@@ -64,7 +82,7 @@ export const getNameCountries = (name) => {
 export const getDetail = (id) => {
     return async function (dispatch) {
         try {
-            const res = await axios('http://localhost:3001/countries/' + id);
+            const res = await axios('/countries/' + id);
             return dispatch({
                 type: GET_DETAIL,
                 payload: res.data
@@ -84,7 +102,7 @@ export function setDetail() {
 
 export const getActivities = () => {
     return async function(dispatch) {
-        const res = await axios.get('http://localhost:3001/activities');
+        const res = await axios.get('/activities');
         return dispatch({
             type: GET_ACTIVITIES,
             payload: res.data
@@ -94,7 +112,7 @@ export const getActivities = () => {
 
 export const postActivity = (payload) => {
     return async function() {
-        const res = await axios.post('http://localhost:3001/activities', payload);
+        const res = await axios.post('/activities', payload);
         return{
             type: POST_ACTIVITY,
             payload: res

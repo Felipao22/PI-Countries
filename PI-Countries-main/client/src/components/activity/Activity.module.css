@@ -2,7 +2,7 @@
 
 .container {
   background-color:rgba(255, 255, 255, 0.897);
-  width: 500px;    
+  width: 500px;   
   border-radius: 8px;
   margin: 50px;
   justify-content: center;
@@ -12,20 +12,21 @@
   padding-bottom: 20px;
   font-family: 'IBM Plex Sans', sans-serif;
   padding: 40px;
-  margin-left: 32%;
-  
+  margin-left: 31%;
 }
 
 .container label {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
   margin-right: 5%;
+  
 }
 .container input {
   width: 150px;
   margin-left: 5px;
   margin-top: 7px;
   margin-bottom: 7px;
+  border-radius: 10px;
 }
 
 .container button {
@@ -35,7 +36,7 @@
 .container select {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color:rgba(255, 255, 255, 0.897);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5); */
 }
 
 .check{
@@ -87,10 +88,11 @@
   justify-content: center;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
-  margin-right: 25%;
+  /* margin-right: 25%; */
   margin-top: 7px;
   margin-bottom: 7px;
   padding-right: 5px;
+  
 }
 
 .select select {
@@ -98,7 +100,7 @@
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   background-color:rgba(255, 255, 255, 0.897);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5); */
   border-radius: 10px;
   color: black;
   margin-left: 25 px;
@@ -116,4 +118,15 @@
   align-content: center;
   justify-content: center;
   padding-left: 20px;
+}
+.values {
+  display: flex;
+  width: 160px;
+  margin-left: 10px;
+  /* border:10px; */
+  background-color:rgba(255, 255, 255, 0.897);
+  color: black;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: bold;
+  /* border-color: black; */
 }

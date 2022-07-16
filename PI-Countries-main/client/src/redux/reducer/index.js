@@ -117,6 +117,17 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: typeActivity
               }
+
+            // case ORDER_BY_UNDER_POPULATION: 
+            // let population = action.payload === 'All' ?
+            // state.allCountries :
+            // state.allCountries.filter(e => 
+            //     e.population < 2000000
+            // )
+            //     return{
+            //         ...state,
+            //         countries: population
+            //     }
         default:
             return {...state};
     }

@@ -24,20 +24,25 @@ export default function Detail(){
             {
             countries.length > 0 ?
             <div className={styles.container} key={id}>
-                <img src={countries[0].flags} alt="Bandera de país no encontrada" />
+                <img src={countries[0].flags} alt="Country flag not found" />
                 <h1>{countries[0].name}</h1>
-                <h2>{countries[0].continents? countries[0].continents: 'No tiene continente'}</h2>
-                <h3>{countries[0].id? countries[0].id:'No tiene id' }</h3>
-                <h4>Capital: {countries[0].capital? countries[0].capital: 'No tiene capital'}</h4>
-                <h4>Subregión: {countries[0].subregion?countries[0].subregion : 'No tiene SubRegion'}</h4>
-                <h4>Área: {countries[0].area? countries[0].area : 0}Km2</h4>
-                <h4>Población: {countries[0].population} Hab.</h4>
-                <h4 className={styles.actividades}>Actividades: {countries[0].activities?
-                countries[0].activities.map(e => ` Nombre: ${e.name}, Dificultad: ${e.dificultad}, Duración: ${e.duracion}hs., Temporada: ${e.temporada}.`) : 'No hay actividades.'}</h4>
+                <h2>{countries[0].continents? countries[0].continents: 'Has no continent'}</h2>
+                <h3>{countries[0].id? countries[0].id:'Has no id' }</h3>
+                <h4>Capital: {countries[0].capital? countries[0].capital: 'Has no capital'}</h4>
+                <h4>Subregion: {countries[0].subregion?countries[0].subregion : 'Has no Subregion'}</h4>
+                <h4>Area: {countries[0].area? countries[0].area : 0}Km2</h4>
+                <h4>Population: {countries[0].population} Hab.</h4>
+                <h4 className={styles.actividades}>Activities: {countries[0].activities?
+                countries[0].activities.map(e => ` Name: ${e.name}, Dificulty: ${e.dificulty}, Duration: ${e.duration}hs. , Season: ${e.season}.`) : 'No activities.'}</h4>
                     <Link to='/home'>
                         <button>Volver</button>
                     </Link>
-            </div> : <h2 className={styles.loading}>Loading...</h2> 
+            </div> :
+        //     <svg viewBox="25 25 50 50">
+        //     <circle r="20" cy="50" cx="50"></circle>
+        //   </svg>
+            // <div className={styles.chaotic-orbit}></div>
+             <h2 className={styles.loading}>Loading...</h2> 
             }
         </div>
     )

@@ -6,7 +6,7 @@ const router = Router();
 router.get('/', async (req, res) => {
     try {
         const activity = await Activities.findAll({
-            attributes: ['id', 'name', 'dificultad', 'duracion', 'temporada'],
+            attributes: ['id', 'name', 'dificulty', 'duration', 'season'],
             include: Country
         })
         res.status(200).send(activity)
@@ -18,12 +18,12 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name, dificultad, duracion, temporada, countries } = req.body;
+        const { name, dificulty, duration, season, countries } = req.body;
         const createAct = await Activities.create({           
                 name: name,
-                dificultad: dificultad,
-                duracion: duracion,
-                temporada: temporada,
+                dificulty: dificulty,
+                duration: duration,
+                season: season,
         })
         let actADb = await Country.findAll({
                 where:{name: countries}

@@ -7,17 +7,19 @@ import styles from './Activity.module.css'
 function validate(input) {
     let errors= {};
     if(!input.name) {
-        errors.name = 'Se requiere un nombre'
-    } else if(!input.dificultad) {
-        errors.dificultad = 'Se requiere una dificultad'
-    } else if(input.dificultad > 5 || input.dificultad < 1) {
-        errors.dificultad = 'Se requiere una dificultad entre 1 y 5'
-    }else if(!input.duracion) {
-        errors.duracion = 'Se requiere una duración'
-    }else if(input.duracion > 24) {
-        errors.duracion = 'Se requiere una duración hasta 24 hs.'
-    } else if(!input.temporada) {
-        errors.temporada = 'Se requiere una temporada'
+        errors.name = 'A name is required'
+    } else if(!input.dificulty) {
+        errors.dificulty = 'A dificulty is required'
+    } else if(input.dificulty > 5 || input.dificulty < 1) {
+        errors.dificulty = 'A dificulty between 1 and 5 is required'
+    }else if(!input.duration) {
+        errors.duration = 'A duration is required'
+    }else if(input.duration > 24) {
+        errors.duration = 'A duration of up to 24 hours is required'
+    } else if(!input.season) {
+        errors.season = 'A season is required'
+    } else if(!input.countries.length) {
+        errors.countries = 'A country is required'
     }
     return errors;    
 }
@@ -25,18 +27,18 @@ function validate(input) {
 export default function ActivityCreated() {
     const dispatch = useDispatch();
     let countries = useSelector((state) => state.allCountries);
-    countries = countries.sort((a, b) => {
-        if(a.name > b.name) return  1;
-        if(b.name > a.name) return -1;
-        return 0;
-    })
+        countries = countries.sort((a, b) => {
+            if(a.name > b.name) return  1;
+            if(b.name > a.name) return -1;
+            return 0;
+        })
     const [errors, setErrors] = useState({});
 
     const [input, setInput] = useState({
         name: '',
-        dificultad: '',
-        duracion: '',
-        temporada: '',
+        dificulty: '',
+        duration: '',
+        season: '',
         countries: []
     })
 
@@ -69,23 +71,30 @@ export default function ActivityCreated() {
         if(e.target.checked){
             setInput({
                 ...input,
-                temporada: e.target.value
+                season: e.target.value
             })
         }
     }
 
-    function handleSubmit(e){
+
+    function handleSubmit(e) {
         e.preventDefault();
-        dispatch(postActivity(input));
-        alert("Activity created successfully")
-        setInput({
-            name: "",
-            dificultad: "",
-            duracion: "",
-            temporada: "",
-            countries: []
-        })
-    }
+        console.log(input)
+        setErrors(validate(input))
+        const alerts = validate(input)
+        if (Object.values(alerts).length !== 0) { alert('Se requieren todos los campos') }
+        else {
+            dispatch(postActivity(input))
+            alert('Actividad creada exitosamente!')
+            setInput({
+                name: '',
+                dificulty: '',
+                duration: '',
+                season: '',
+                countries: []
+            })
+        }
+    };
 
     function handleDelete(e) {
         setInput({
@@ -103,10 +112,10 @@ export default function ActivityCreated() {
                 countries.length > 0 ?
                 <div>
 
-                <h1 className={styles.h1}>Creá la actividad</h1>
+                <h1 className={styles.h1}>Create Activity</h1>
                 <form className={styles.container} onSubmit={(e) => handleSubmit(e)}>
                 <div>
-                    <label>Actividad:</label>
+                    <label>Activity:</label>
                     <input  className={errors.name && styles.danger} type="text" value= {input.name} name="name"
                     onChange={(e) => handleChange(e)}
                     required/>
@@ -116,9 +125,9 @@ export default function ActivityCreated() {
                     )}
                 </div>
                 <div className={styles.select}>
-                    <label>Dificultad:</label>
-                    <select name="dificultad" value={input.dificultad} id="dificultad"  onChange={(e) => handleChange(e)}>
-                    <option disabled='---' value="---">---</option>
+                    <label>Dificulty:</label>
+                    <select className={styles.values} name="dificulty" value={input.dificulty} id="dificulty"  onChange={(e) => handleChange(e)}>
+                    <option  hidden  value="---">---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -126,44 +135,44 @@ export default function ActivityCreated() {
                     <option value="5">5</option>
                  
                     </select>
-                    {errors.dificultad && (
-                        <p className="error">{errors.dificultad} </p>
+                    {errors.dificulty && (
+                        <p className="error">{errors.dificulty} </p>
                         )}
                 </div>
                 <div>
-                    <label>Duración:</label>
-                    <input type="text" value= {input.duracion} name='duracion'
+                    <label>Duration:</label>
+                    <input type="text" value= {input.duration} name='duration'
                     onChange={(e) => handleChange(e)}
                     max='24'
                     min='0'
                     required/>
                     <br/>
-                    {errors.duracion && (
-                        <p className="error">{errors.duracion} </p>
+                    {errors.duration && (
+                        <p className="error">{errors.duration} </p>
                         )}
                 </div>
-                    <label className={styles.temporada}>Temporada:</label>
+                    <label className={styles.temporada}>Season:</label>
                 <div className={styles.check}>
                     <br />
-                    <label >Verano</label>
-                    <input type="radio" id='Verano' value='Verano' name='temporada'
+                    <label >Summer</label>
+                    <input type="radio" id='Summer' value='Summer' name='season'
                     onClick={(e) => handleCheck(e)}
                     defaultChecked
                     required/>                    
                     
-                    <label >Primavera</label>
-                    <input type="radio" id='Primavera' value='Primavera' name='temporada'
+                    <label >Spring</label>
+                    <input type="radio" id='Spring' value='Spring' name='season'
                     onClick={(e) => handleCheck(e)}
                     required/>
                     
-                    <label >Otoño</label>
-                    <input type="radio" id='Otoño' value='Otoño' name='temporada'
+                    <label >Autumn</label>
+                    <input type="radio" id='Autumn' value='Autumn' name='season'
                     onClick={(e) => handleCheck(e)}
                     required/>
                
                     
-                    <label >Invierno</label>
-                    <input type="radio" id='Invierno' value='Invierno' name='temporada'
+                    <label >Winter</label>
+                    <input type="radio" id='Winter' value='Winter' name='season'
                     onClick={(e) => handleCheck(e)}
                     required/>
                     
@@ -171,24 +180,24 @@ export default function ActivityCreated() {
                  
                 </div>
                 <select onChange ={e=>handleSelect(e)} defaultValue='country'>
-                    <option value ='country'> Seleccione Pais</option>
+                    <option value ='country' hidden> Select Country</option>
                 {countries.map((a)=>(
                     <option key={a.name} value={a.name}>{a.name}</option>
                     ) )}
                 
                 </select>
                 <div className={styles.delete}>
-                <p  className={styles.country}>{input.countries.map(e => e + ', ')}</p>
+                <p  className={styles.country}>{input.countries.map(e => e + ', ')} </p>
                 {input.countries.map(e => 
-                <p onClick={() => handleDelete(e)}><button className={styles.x}>X</button>                        
-                    </p>
+                <button onClick={() => handleDelete(e)} className={styles.x}>X</button>                        
+                    
                     )}
                 </div>
-                <button type='submit'>Crear Actividad</button>
+                <button type='submit'>Create Activity</button>
             </form>
-            <Link to = '/home'> <button>Volver</button></Link>
+            <Link to = '/home'> <button>Back</button></Link>
                     </div>
-            : <div><option>Loading</option></div>
+            : <div><option>Loading...</option></div>
         }
     
         </div>

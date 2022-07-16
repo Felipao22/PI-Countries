@@ -40,11 +40,10 @@ async function getCountriesDb(req, res){
 
 
 const getAllCountry = async () => {
-     await getCountriesDb()
      return await Country.findAll({
         include:{
             model: Activities,
-            attributes: ['name', 'dificultad','duracion','temporada'],
+            attributes: ['name', 'dificulty','duration','season'],
             through:{
                 attributes:[]
             }

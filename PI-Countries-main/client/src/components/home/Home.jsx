@@ -16,7 +16,7 @@ import styles from './Home.module.css';
 export default function Home () {
     const dispatch = useDispatch();
     const allCountries = useSelector((state => state.countries));
-    const allActivities = useSelector((state) => state.stateActivity)
+    const allActivities = useSelector((state) => state.stateActivity);
     // let countriesPerPage = 9;
     const [orden, setOrden] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -81,6 +81,13 @@ export default function Home () {
         setOrden(`Ordenado ${e.target.value}`)
     }
 
+    // function handleFilterUnderPopulation(e) {
+    //     e.preventDefault();
+    //     dispatch(orderByUnderPopulation(e.target.value))
+    //     setCurrentPage(1)
+    //     setOrden(`Ordenado ${e.target.value}`)
+    // }
+
 
 
     console.log(orden)
@@ -99,14 +106,14 @@ export default function Home () {
                 
             <div className={styles.selectdiv}>
                 <select className={styles.select} onChange={e => handleSort(e)}>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
+                    <option value='asc'>Ascendent</option>
+                    <option value='desc'>Descendent</option>
                 </select >
                 <select className={styles.select} onChange={e => handleSortPopulation(e)}>
-                    <option value='asc' >Menor Población a Mayor Población</option>
-                    <option value='desc'>Mayor Población a Menor Población</option>
+                    <option value='asc' >Lower Population to Higher Population </option>
+                    <option value='desc'>Higher Population to Lower Population</option>
                 </select>
-                <select className={styles.select} onChange={e => handleFilterContinents(e)}>
+                <select className={styles.select} onChange={(e) => handleFilterContinents(e)}>
                     <option value='All'>All</option>
                     <option value='Antarctic'>Antarctic</option>
                     <option value='Africa'>Africa</option>
@@ -115,6 +122,12 @@ export default function Home () {
                     <option value='Europe'>Europe</option>
                     <option value='Oceania'>Oceania</option>
                 </select>
+                {/* <select onChange={e => handleFilterUnderPopulation(e)} >
+                    <option value="All">All</option>
+                        <option value='Lessthan'> Less than</option>
+                    
+
+                </select> */}
                 <div>
                 <div>
                 <select className={styles.select} onChange={e => handleChange(e)}>
@@ -142,7 +155,7 @@ export default function Home () {
             <div className={styles.divx}>
 
                 <Link to='/activities'>
-                    <button>Crear Actividad</button>
+                    <button>Create Activity</button>
                 </Link>
             <button onClick={e => handleClick(e)} >
                 Reset

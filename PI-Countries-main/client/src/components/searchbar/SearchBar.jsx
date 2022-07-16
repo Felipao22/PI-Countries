@@ -22,8 +22,8 @@ export default function SearchBar({setCurrentPage}) {
 
     return(
         <div className={styles.searchbar}>
-            <input className={styles.input} type="text" placeholder="Buscar País" value={name} onChange={(e) => handleInputChange(e) } />
-            <button type="submit" onClick={(e) => handleSubmit(e)} >Buscar</button>
+            <input className={styles.input} type="text" placeholder="Search Country" value={name} onChange={(e) => handleInputChange(e) } />
+            <button type="submit" onClick={(e) => handleSubmit(e)} >Search</button>
         </div>
     )
 }
