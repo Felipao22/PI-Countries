@@ -158,7 +158,7 @@ export default function ActivityCreated() {
                     <label ></label>
                     <input type="radio" id='Summer' name='season'  value='Summer' 
                     onClick={(e) => handleCheck(e)}
-                    defaultChecked
+                    // defaultChecked
                     required/>Summer                  
                     
                     <label ></label>
