@@ -20,7 +20,7 @@ export default function Paginado({countriesPerPage, allCountries, paginado}) {
                     (pageNumbers.map(num => {
                         return(
                             <div key={num}>
-                                <button onClick={() => paginado(num) }>{num} </button>
+                                <button  onClick={() => paginado(num) }>{num} </button>
                             </div>
                         )
                     }))

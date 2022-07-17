@@ -169,7 +169,7 @@ export default function Home () {
                 <Cards currentCountries={currentCountries} />
                                 
             </div>
-            <div>
+            {/* <div>
                  <Paginado
                     countriesPerPage = {countriesPerPage}
                     allCountries = {allCountries.length}
@@ -177,7 +177,7 @@ export default function Home () {
 
                 />
 
-            </div>
+            </div> */}
             </div>
     )
 }

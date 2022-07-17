@@ -40,6 +40,7 @@ async function getCountriesDb(req, res){
 
 
 const getAllCountry = async () => {
+    // await getCountriesDb();
      return await Country.findAll({
         include:{
             model: Activities,

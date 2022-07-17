@@ -38,11 +38,11 @@ export default function Detail(){
                         <button>Volver</button>
                     </Link>
             </div> :
-        //     <svg viewBox="25 25 50 50">
-        //     <circle r="20" cy="50" cx="50"></circle>
-        //   </svg>
+            <svg viewBox="25 25 50 50">
+            <circle r="20" cy="50" cx="50"></circle>
+          </svg>
             // <div className={styles.chaotic-orbit}></div>
-             <h2 className={styles.loading}>Loading...</h2> 
+            //  <h2 className={styles.loading}></h2> 
             }
         </div>
     )

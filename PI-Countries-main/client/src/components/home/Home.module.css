@@ -38,22 +38,22 @@
    
   .title {
     font-family: 'IBM Plex Sans', sans-serif;
-    text-decoration: none;
-    margin-top: 70px;
+    /* text-decoration: none; */
+    /* margin-top: 70px; */
     margin-bottom: 30px;
     font-weight: 400;
     margin-right: 75%;
     padding-left: 20px;
     padding-right: 15px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     padding-top: 5px;
-    color: black;
-    display: flex;
+    color: white;
+    /* display: flex; */
     justify-content: left;
     font-size: 55px;
     text-shadow: none;
-    background-color:rgba(255, 255, 255, 0.897);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+    /* background-color:rgba(255, 255, 255, 0.897); */
+    /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5); */
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     
@@ -72,7 +72,21 @@
     font-family: 'IBM Plex Sans', sans-serif;
     border: none;
     height: 25px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
   }
+  button:hover{
+    color: black;
+    transform: translateY(-7px);
+    background-color: #3a86ff;
+    
+  }
+
+  .searchbar:active {
+    transform: translateY(-1px);
+  }
+
 
   .divx {
     display: flex;

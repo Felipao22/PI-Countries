@@ -135,6 +135,7 @@ export default function ActivityCreated() {
                     <option value="5">5</option>
                  
                     </select>
+                    
                     {errors.dificulty && (
                         <p className="error">{errors.dificulty} </p>
                         )}
