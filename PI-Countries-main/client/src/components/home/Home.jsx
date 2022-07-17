@@ -133,7 +133,7 @@ export default function Home () {
                 <select className={styles.select} onChange={e => handleChange(e)}>
                     <option value="All">All</option>
                     {allActivities? allActivities.map(e => 
-                        <option value={e.name} key={e.name}>{e.name}</option>
+                        <option value={e.name} key={e.name}>{e.name[0].toUpperCase() + e.name.substring(1)}</option>
                         )
                         : <div><option>Loading</option></div>
                     }

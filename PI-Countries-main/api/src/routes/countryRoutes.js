@@ -17,7 +17,7 @@ router.get('/', async (req, res) =>{
             const country = await getAllCountry();                                     
             const nameCountry = country.filter(c => c.name.toLowerCase().startsWith(name.toLowerCase()));       
             nameCountry.length ?
-            res.status(200).send(nameCountry) : res.status(404).send('No existe nombre del Pais');                                                   
+            res.status(200).send(nameCountry) : res.status(404).send('Country name does not exist!');                                                   
         }
         catch(error){
          res.send(error)

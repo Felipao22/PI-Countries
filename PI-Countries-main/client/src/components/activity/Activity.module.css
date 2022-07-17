@@ -22,7 +22,7 @@
   
 }
 .container input {
-  width: 150px;
+  /* width: 150px; */
   margin-left: 5px;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -40,12 +40,10 @@
 }
 
 .check{
-  display: flex;
-  flex-direction: row;
-  width: 400px;
-  height: auto;
-  margin-top: 7px;
-  margin-bottom: 7px;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    border: none;
+    
   /* justify-content: center;
   align-items: center;
   margin-left: 80%;
@@ -80,7 +78,7 @@
   margin-right: 40%;
   margin-top: 7px;
   margin-bottom: 7px;
-  padding-right: 148px;
+  padding-right: 180px;
 }
 
 .select {
@@ -129,4 +127,13 @@
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
   /* border-color: black; */
+}
+.activity{
+  justify-content: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: bold;
+  margin-right: 40%;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  padding-right: 10px;
 }

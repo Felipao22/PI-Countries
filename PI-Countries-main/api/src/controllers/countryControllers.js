@@ -44,7 +44,7 @@ const getAllCountry = async () => {
      return await Country.findAll({
         include:{
             model: Activities,
-            attributes: ['name', 'dificulty','duration','season'],
+            attributes: ['name', 'difficulty','duration','season'],
             through:{
                 attributes:[]
             }
