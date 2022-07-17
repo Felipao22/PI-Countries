@@ -32,7 +32,7 @@ async function getCountriesDb(req, res){
                 }
             })
         })
-        console.log('Se ha cargado la base de datos de paises');
+        console.log('Database loaded');
     } catch (error) {
         console.log(error);
     }

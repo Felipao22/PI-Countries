@@ -82,10 +82,10 @@ export default function ActivityCreated() {
         console.log(input)
         setErrors(validate(input))
         const alerts = validate(input)
-        if (Object.values(alerts).length !== 0) { alert('Se requieren todos los campos') }
+        if (Object.values(alerts).length !== 0) { alert('All fields are required') }
         else {
             dispatch(postActivity(input))
-            alert('Actividad creada exitosamente!')
+            alert('Activity created succesfully!')
             setInput({
                 name: '',
                 dificulty: '',
