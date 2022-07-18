@@ -36,19 +36,19 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/:name', async (req, res) => {
-    try {
-        const {name} = req.params;
-        const act = await Activities.destroy({
-            where:{
-                name: name
-            }
-        })
-        res.send('Eliminated')
-    } catch (error) {
-        console.log(error)
-    }
-})
+// router.delete('/:name', async (req, res) => {
+//     try {
+//         const {name} = req.params;
+//         const act = await Activities.destroy({
+//             where:{
+//                 name: name
+//             }
+//         })
+//         res.send('Eliminated')
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 
 
