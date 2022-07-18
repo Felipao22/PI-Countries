@@ -26,3 +26,9 @@
 .boton:hover {
     font-size: larger;
 }
+
+    @media screen and (max-width: 600px) {
+      .paginado{
+        width: 100%;
+      }
+    }
