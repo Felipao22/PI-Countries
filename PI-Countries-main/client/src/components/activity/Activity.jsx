@@ -136,9 +136,15 @@ export default function ActivityCreated() {
                  
                     </select>
                     
-                    {errors.difficulty && (
-                        <p className="error">{errors.difficulty} </p>
-                        )}
+                    {/* {errors.difficulty && (
+                        <div>
+                            <br />
+                            <p className="error">{errors.difficulty} </p>
+                            <br />
+                        </div>
+                            )} */}
+                        
+                        
                 </div>
                 <div>
                     <label>Duration:</label>
