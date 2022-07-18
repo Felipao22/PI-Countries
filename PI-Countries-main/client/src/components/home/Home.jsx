@@ -35,9 +35,8 @@ export default function Home () {
     
     //dispatch en el componentDidMount
     useEffect(() => {
-        dispatch(getCountries())
-       
-    },[dispatch, currentPage])
+        dispatch(getCountries())      
+    },[dispatch])
 
     useEffect(() => {
         dispatch(getActivities())
@@ -55,8 +54,8 @@ export default function Home () {
     //funcion para ordenar asc o desc
     function handleSort(e){
         e.preventDefault();
-        dispatch(orderByName(e.target.value));
         setCurrentPage(1);
+        dispatch(orderByName(e.target.value));
         setOrden(`Ordenado ${e.target.value}`);
     }
     //funcion para ordenar de mayor o menor la población
@@ -73,7 +72,7 @@ export default function Home () {
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`);
     }
-    //funcion para mostrar las actividades
+    // funcion para mostrar las actividades
     function handleChange(e) {
         e.preventDefault()
         dispatch(filterActivity(e.target.value))
