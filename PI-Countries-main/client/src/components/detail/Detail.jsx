@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetail, setDetail } from "../../redux/actions/index";
 import { useEffect } from "react";
 import styles from './Detail.module.css'
+import { SpinnerCircular } from "spinners-react";
 
 
 export default function Detail(){
@@ -38,9 +39,9 @@ export default function Detail(){
                         <button>Volver</button>
                     </Link>
             </div> :
-            <svg viewBox="25 25 50 50">
-            <circle r="20" cy="50" cx="50"></circle>
-          </svg>
+            <div className={styles.spinner}>
+            <SpinnerCircular color="white" size="200px" />
+          </div>
             // <div className={styles.chaotic-orbit}></div>
             //  <h2 className={styles.loading}></h2> 
             }

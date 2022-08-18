@@ -1,66 +1,54 @@
 .container {
-    background-color:rgba(255, 255, 255, 0.897);
-    width: 400px;    
-    border-radius: 8px;
-    margin: 50px;
-    justify-content: center;
-    border: none;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
-    align-content: center;
-    margin-left: 37%;
-    padding-bottom: 20px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    /* padding-left: 30px;
+  background-color: rgba(255, 255, 255, 0.897);
+  width: 400px;
+  border-radius: 8px;
+  margin: 50px;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+  align-content: center;
+  margin-left: 37%;
+  padding-bottom: 20px;
+  font-family: "IBM Plex Sans", sans-serif;
+  /* padding-left: 30px;
     padding-right: 30px; */
 }
 
 .container p {
-    justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .actividades {
-    margin-left: 25px;
-    margin-right: 25px; 
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
-svg {
-    width: 3.25em;
-    transform-origin: center;
-    animation: rotate4 2s linear infinite;
-   
-   }
-   
-   circle {
-    fill: none;
-    stroke: hsl(214, 97%, 59%);
-    stroke-width: 2;
+.spinner {
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-    stroke-linecap: round;
-    animation: dash4 1.5s ease-in-out infinite;
-   }
-   
-   @keyframes rotate4 {
-    100% {
-     transform: rotate(360deg);
-    }
-   }
-   
-   @keyframes dash4 {
-    0% {
-     stroke-dasharray: 1, 200;
-     stroke-dashoffset: 0;
-    }
-   
-    50% {
-     stroke-dasharray: 90, 200;
-     stroke-dashoffset: -35px;
-    }
-   
-    100% {
-     stroke-dashoffset: -125px;
-    }
-   }
-   
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
