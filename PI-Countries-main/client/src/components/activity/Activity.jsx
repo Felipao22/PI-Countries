@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries, postActivity} from "../../redux/actions";
 import styles from './Activity.module.css'
+import { SpinnerCircular } from "spinners-react";
 
 function validate(input) {
     let errors= {};
@@ -127,7 +128,7 @@ export default function ActivityCreated() {
                 <div className={styles.select}>
                     <label>Difficulty:</label>
                     <select className={styles.values} name="difficulty" value={input.difficulty} id="difficulty"  onChange={(e) => handleChange(e)}>
-                    <option  hidden  value="---">---</option>
+                    <option  hidden  value=""></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -219,7 +220,7 @@ export default function ActivityCreated() {
             </form>
             <Link to = '/home'> <button>Back</button></Link>
                     </div>
-            : <div><option>Loading...</option></div>
+            : <div><SpinnerCircular color="white" size="200px"/></div>
         }
     
         </div>

@@ -1,3 +1,8 @@
+/* @media screen and (max-width: 600px) {
+  
+} */
+
+
 .select {
     font-size: 14px;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -76,10 +81,10 @@
     cursor: pointer;
     outline: none;
   }
-  button:hover{
+ button:hover{
     color: black;
     transform: translateY(-7px);
-    background-color: #3a86ff;
+    /* background-color: #3a86ff; */
     
   }
 
@@ -97,4 +102,49 @@
     margin-top: 20px;
   }
 
+  .spinner {
+    display: flex;
+    margin-top: 200px;
+    justify-content: center;
+  }
+  @media screen and (max-width: 700px) {
+    .selectdiv {
+      width: 70%;
+    }
+    .selectdiv select {
+      width: 20%;
+      height: auto;
+      padding: 0.5px;
+      font-size: 10px;
+      margin: 1.2px;
+    }
+  
+    .divx {
+      width: 100%;
+      justify-content:flex-start;
+    }
+    .title {
+      font-size: 45px;
+      margin-right: 0;
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      width: 80%;
+    }
+  
+    /* .containerD {
+      width: 80%;
+      margin: 10%;
+    }
+    .containerC {
+      width: 80%;
+      margin-top: 5px;
+      margin-left: 15px;
+  
+      margin-bottom: 5px;
+    }
+  
+    .containerC input {
+      width: 260px;
+    } */
+  }
 

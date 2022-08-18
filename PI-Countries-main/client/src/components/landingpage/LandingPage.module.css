@@ -1,10 +1,10 @@
 /* body {
     height: 50px;
 } */
-.body {
+.bodyy {
     background-color: black;
-    height: 100%;
-    padding-bottom: 100%;
+    height: 70vh;
+    padding-bottom: 20%;
 }
 
 .title {
@@ -21,25 +21,21 @@
     /* margin-top: 50px; */
 
 }
-/* .boton {
-    font-family: 'IBM Plex Sans', sans-serif;
-    justify-content: center;
-    background-color:rgba(255, 255, 255, 0.897);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
-    color: black;
-    margin: 20%;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 50px;
-    align-content: center;
-} */
 
-.img{
+.image{
     display: flex;
     justify-content: center;
     align-content: center;
     width: 40%;
-    height: auto;
+    /* height: auto; */
     margin-left: 30%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
+
+@media screen and (max-width: 686px) {
+    .body{
+        height: 100%;
+        padding-bottom: 100%;
+        width: 100%;
+    }
+ }

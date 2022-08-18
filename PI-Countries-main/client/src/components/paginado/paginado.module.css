@@ -1,34 +1,75 @@
-.paginado{
-    background-color:rgba(255, 255, 255, 0.897);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
-    border-radius: 18px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    justify-content: space-around;
-    margin-left: 20%;
-    margin-right: 20%;
-    /* margin-bottom: 10px; */
-
+.paginado {
+  /* background-color:rgba(255, 255, 255, 0.897);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+  border-radius: 18px; */
+  font-family: "Montserrat", sans-serif;
+  /* border: none; */
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 10px;
 }
 
-.boton {
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    color: black;
-    font-weight: bold;
-    margin-left: 0px;
-    margin-right: 0px;
+
+
+
+
+
+
+.paginado button {
+  font-size: 20px;
+  font-weight: bold;
+  /* border-radius: 50%; */
+  border: none;
+  width: 20px;
+  height: auto;
+  color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 4px;
+  /* margin: 2px; */
+  background-color: transparent;
+  justify-content: space-evenly;
 }
 
-.boton:hover {
-    font-size: larger;
+.paginado button:hover {
+  padding: 0px;
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+  /* background-color: black; */
 }
 
-    @media screen and (max-width: 600px) {
-      .paginado{
+
+    @media screen and (max-width: 1075px) {
+      .paginado {
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .paginado {
         width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        padding-left: 35px;
+        padding-right: 0;
+        justify-content:center;
+        /* justify-content: space-evenly; */
+        /* align-content: center; */
+        
+      }
+      .paginado button {
+        font-size: 12px;
+        padding:1.2px;
+      }
+      .paginado button:hover {
+        font-size: 7px;
       }
     }

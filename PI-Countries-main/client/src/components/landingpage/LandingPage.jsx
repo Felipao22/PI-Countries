@@ -5,10 +5,12 @@ import imagen from '../../imagen/klipartz.com.png'
 
 export default function LandingPage() {
     return(
-        <div className={styles.body}>
+        <div style={{height:'70vh'}} className={styles.bodyy}>
             <h1 className={styles.title}>Welcome to the Countries App</h1>
+            <br />
+            <h2 className={styles.title}>Click in the Earth</h2>
             <Link to ='/home'>
-                <img className={styles.img} src={imagen} alt="Imagen no encontrada" />
+                <img className={styles.image} src={imagen} alt="Imagen no encontrada" />
             </Link>
         </div>
     )

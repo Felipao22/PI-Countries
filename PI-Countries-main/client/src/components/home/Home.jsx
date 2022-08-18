@@ -12,6 +12,7 @@ import { Cards } from "../cards/Cards";
 import SearchBar from "../searchbar/SearchBar";
 // import FiltActivity from '../filtactivity/FiltActivity'
 import styles from './Home.module.css';
+import { SpinnerCircular} from 'spinners-react';
 
 export default function Home () {
     const dispatch = useDispatch();
@@ -25,6 +26,11 @@ export default function Home () {
     const indexOfLastCountry = currentPage * countriesPerPage; // 10
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // 0
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+
+    const [population, setPopulation] = useState("Desordenado");
+    const [alphabetic, setAlphabetic] = useState("Desordenado");
+  const [continents, setContinents] = useState("All");
+  const [activities, setActivities] = useState("All");
     
     //seteo el estado con el constante numero de pagina
     const paginado = (pageNumber) => {
@@ -47,6 +53,10 @@ export default function Home () {
     //funcion para volver a cargar los países
     function handleClick(e){
         e.preventDefault();
+        setActivities('All');
+        setContinents('All');
+        setPopulation('Desordenado')
+        setAlphabetic('Desordenado')
         dispatch(getCountries());
         setCurrentPage(1);
     }
@@ -54,6 +64,7 @@ export default function Home () {
     //funcion para ordenar asc o desc
     function handleSort(e){
         e.preventDefault();
+        setAlphabetic();
         setCurrentPage(1);
         dispatch(orderByName(e.target.value));
         setOrden(`Ordenado ${e.target.value}`);
@@ -61,6 +72,7 @@ export default function Home () {
     //funcion para ordenar de mayor o menor la población
     function handleSortPopulation(e) {
         e.preventDefault();
+        setPopulation();
         dispatch(orderByPopulation(e.target.value));
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`);
@@ -68,13 +80,15 @@ export default function Home () {
     //funcion para ordernar por continentes
     function handleFilterContinents(e){
         e.preventDefault();
+        setContinents(e.target.value)
         dispatch(orderByContinent(e.target.value));
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`);
     }
     // funcion para mostrar las actividades
     function handleChange(e) {
-        e.preventDefault()
+        e.preventDefault();
+        setActivities();
         dispatch(filterActivity(e.target.value))
         setCurrentPage(1)
         setOrden(`Ordenado ${e.target.value}`)
@@ -94,6 +108,7 @@ export default function Home () {
     
     return(
         <div>
+            
             <Link to= '/countries' >
             </Link>
             <div >
@@ -104,16 +119,22 @@ export default function Home () {
             />
                 
             <div className={styles.selectdiv}>
-                <select className={styles.select} onChange={e => handleSort(e)}>
+                <select value={alphabetic} className={styles.select} onChange={e => handleSort(e)}>
+                <option value="Desordenado" hidden selected>
+                Order alphabetic
+                  </option>
                     <option value='asc'>Ascendent</option>
                     <option value='desc'>Descendent</option>
                 </select >
-                <select className={styles.select} onChange={e => handleSortPopulation(e)}>
+                <select value={population} className={styles.select} onChange={e => handleSortPopulation(e)}>
+                <option value="Desordenado" hidden selected>
+                    Order by population
+                  </option>
                     <option value='asc' >Lower Population to Higher Population </option>
                     <option value='desc'>Higher Population to Lower Population</option>
                 </select>
-                <select className={styles.select} onChange={(e) => handleFilterContinents(e)}>
-                    <option value='All'>All</option>
+                <select value={continents} className={styles.select} onChange={(e) => handleFilterContinents(e)}>
+                    <option value='All'>All Continents</option>
                     <option value='Antarctic'>Antarctic</option>
                     <option value='Africa'>Africa</option>
                     <option value='Americas'>Americas</option>
@@ -127,10 +148,9 @@ export default function Home () {
                     
 
                 </select> */}
-                <div>
-                <div>
-                <select className={styles.select} onChange={e => handleChange(e)}>
-                    <option value="All">All</option>
+
+                <select value={activities} className={styles.select} onChange={e => handleChange(e)}>
+                    <option value="All">All Activities</option>
                     {allActivities? allActivities.map(e => 
                         <option value={e.name} key={e.name}>{e.name[0].toUpperCase() + e.name.substring(1)}</option>
                         )
@@ -139,44 +159,38 @@ export default function Home () {
 
                     
                     </select>
-                    </div>
-                </div>
+    
            
             </div>
-            <div>
-
-                <Paginado
-                    countriesPerPage = {countriesPerPage}
-                    allCountries = {allCountries.length}
-                    paginado = {paginado}
-                />
-            </div>
-            <div className={styles.divx}>
-
-                <Link to='/activities'>
-                    <button>Create Activity</button>
-                </Link>
-            <button onClick={e => handleClick(e)} >
-                Reset
-            </button>
-                <Link to='/'>
-                <button>Landing Page</button>
-
-                </Link>
-            </div>
-            <div>
-                <Cards currentCountries={currentCountries} />
-                                
-            </div>
-            {/* <div>
-                 <Paginado
-                    countriesPerPage = {countriesPerPage}
-                    allCountries = {allCountries.length}
-                    paginado = {paginado}
-
-                />
-
-            </div> */}
-            </div>
-    )
+            {currentCountries.length > 0 ? (
+        <div>
+          <Paginado
+            countriesPerPage={countriesPerPage}
+            allCountries={allCountries.length}
+            paginado={paginado}
+          />
+          <div className={styles.divx}>
+          <Link to='/activities'>
+                     <button>Create Activity</button>
+                 </Link>
+                 <button onClick={e => handleClick(e)} >
+                 Reset
+             </button>
+             <Link to='/'>
+                 <button>Landing Page</button>
+ 
+                 </Link>
+          </div>
+          <Cards currentCountries={currentCountries} />
+        </div>
+      ) : (
+        <div className={styles.spinner}>
+          <SpinnerCircular color="white" size="200px" />
+        </div>
+      )}
+    </div>
+                           
+    );
 }
+
+
