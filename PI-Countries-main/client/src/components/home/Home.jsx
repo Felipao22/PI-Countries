@@ -100,11 +100,16 @@ export default function Home () {
     //     setCurrentPage(1)
     //     setOrden(`Ordenado ${e.target.value}`)
     // }
+    let actvOrder = allActivities.map((e) => e.name);
+    actvOrder = actvOrder.sort((a, b) => {
+      if (a > b) return 1;
+      if (b > a) return -1;
+      return 0;
+    });
 
 
 
-    console.log(orden)
-    console.log(allActivities);
+    const actUnique = [...new Set(actvOrder)]
     
     return(
         <div>
@@ -151,8 +156,8 @@ export default function Home () {
 
                 <select value={activities} className={styles.select} onChange={e => handleChange(e)}>
                     <option value="All">All Activities</option>
-                    {allActivities? allActivities.map(e => 
-                        <option value={e.name} key={e.name}>{e.name[0].toUpperCase() + e.name.substring(1)}</option>
+                    {actUnique? actUnique.map(e => 
+                        <option value={e} key={e}>{e[0].toUpperCase() + e.substring(1)}</option>
                         )
                         : <div><option>Loading</option></div>
                     }

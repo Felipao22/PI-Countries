@@ -21,6 +21,7 @@
     width: 300px;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
+    padding-left: 10px;
 
   }
   .input::placeholder {
@@ -46,6 +47,7 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    margin-left: 5px;
     
   }
 
