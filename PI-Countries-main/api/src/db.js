@@ -5,6 +5,9 @@ const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY, DB_ELEPHANT
 } = process.env;
+const connectionString = DB_ELEPHANT
+const pgp = require('pg-promise');
+const db = pgp(connectionString);
 
 // let sequelize =
 //   process.env.NODE_ENV === "production"
@@ -35,10 +38,11 @@ const {
 //     { logging: false, native: false }
 //   );
 
-const sequelize = new Sequelize(DB_ELEPHANT, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+// const sequelize = new Sequelize(DB_ELEPHANT, {
+//   logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// });
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
