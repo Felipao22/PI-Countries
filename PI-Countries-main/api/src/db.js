@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY, DB_ELEPHANT, DB_RENDER
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY, DB_ELEPHANT, DB_RENDER, DB_FL0
 } = process.env;
 // const connectionString = DB_ELEPHANT
 // const pgp = require('pg-promise');
@@ -43,7 +43,7 @@ const {
 //   logging: false, // set to console.log to see the raw SQL queries
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 // });
-const sequelize = new Sequelize(DB_RENDER, {
+const sequelize = new Sequelize(DB_FL0, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialectOptions:{
