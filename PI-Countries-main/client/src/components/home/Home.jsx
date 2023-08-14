@@ -13,6 +13,7 @@ import SearchBar from "../searchbar/SearchBar";
 // import FiltActivity from '../filtactivity/FiltActivity'
 import styles from './Home.module.css';
 import { SpinnerCircular} from 'spinners-react';
+import PaginationArrow from "../paginado/PaginadoFlechas";
 
 export default function Home () {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function Home () {
     const [orden, setOrden] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10);
+    const [isMobile, setIsMobile] = useState(false);
     //constantes para el paginado
     const indexOfLastCountry = currentPage * countriesPerPage; // 10
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // 0
@@ -110,6 +112,21 @@ export default function Home () {
 
 
     const actUnique = [...new Set(actvOrder)]
+
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 1200);
+  };
+
+  handleResize();
+
+  window.addEventListener("resize", handleResize);
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
     
     return(
         <div>
@@ -169,11 +186,20 @@ export default function Home () {
             </div>
             {currentCountries.length > 0 ? (
         <div>
-          <Paginado
-            countriesPerPage={countriesPerPage}
-            allCountries={allCountries.length}
-            paginado={paginado}
-          />
+          {isMobile ? (
+  <PaginationArrow
+    currentPage={currentPage}
+    totalPages={Math.ceil(allCountries.length / countriesPerPage)}
+    onNextPage={() => setCurrentPage(currentPage + 1)}
+    onPrevPage={() => setCurrentPage(currentPage - 1)}
+  />
+) : (
+  <Paginado
+    countriesPerPage={countriesPerPage}
+    allCountries={allCountries.length}
+    paginado={paginado}
+  />
+)}
           <div className={styles.divx}>
           <Link to='/activities'>
                      <button>Create Activity</button>
