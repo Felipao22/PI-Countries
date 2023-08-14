@@ -110,6 +110,7 @@
   @media screen and (max-width: 700px) {
     .selectdiv {
       width: 70%;
+      justify-content: center;
     }
     .selectdiv select {
       width: 20%;
